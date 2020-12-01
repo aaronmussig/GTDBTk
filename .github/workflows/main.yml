@@ -33,9 +33,6 @@ jobs:
           ref: gh_pages
           path: gh_pages
 
-      - name: Introspect
-        run: ls -la
-
       - name: Install Sphinx Requirements
         working-directory: ${{ github.workspace }}/master/docs_src
         run: |
@@ -54,6 +51,14 @@ jobs:
         run: make doc
 
       # Runs a set of commands using the runners shell
-      - name: move
+      - name: Move the docs
+        run: cp -r master/docs/* gh_pages/
+
+     - name: commit and upload
+        working-directory: ${{ github.workspace }}/gh_pages
         run: |
-          ls -la
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "docs update" -a
+          git push
