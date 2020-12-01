@@ -34,7 +34,7 @@ jobs:
           path: gh_pages
 
       - name: Install Sphinx Requirements
-        working-directory: ${{ github.workspace }}/master/docs_src
+        working-directory: ${{ github.workspace }}/master/docs
         run: |
           sudo apt-get update -y
           sudo apt-get install -y pandoc
@@ -47,18 +47,18 @@ jobs:
         run: grep AF_THRESHOLD config.py >  config2.py && mv config2.py config.py
 
       - name: Make the docs
-        working-directory: ${{ github.workspace }}/master/docs_src
-        run: make doc
+        working-directory: ${{ github.workspace }}/master/docs
+        run: make html
 
       # Runs a set of commands using the runners shell
       - name: Move the docs
-        run: cp -r master/docs/* gh_pages/
+        run: |
+          touch master/docs/build/html/.nojekyll
+          cp -a master/docs/build/html/. gh_pages/
 
       - name: commit and upload
         working-directory: ${{ github.workspace }}/gh_pages
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
+          git add --all
           git commit -m "docs update" -a
           git push
