@@ -26,15 +26,13 @@ jobs:
         with:
           python-version: '3.8'
 
-#      - name: Install required modules
-#        run: python3 -m pip install setuptools
-        
       - name: Install Sphinx Requirements
         working-directory: ${{ github.workspace }}/docs_src
         run: |
-          python -m pip install -r requirements.txt
           sudo apt-get update -y
           sudo apt-get install -y pandoc
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
       # otherwise build will fail as ref data doesnt exist
       - name: Manually edit config file
@@ -46,7 +44,6 @@ jobs:
         run: make doc
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: move
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          ls -la
