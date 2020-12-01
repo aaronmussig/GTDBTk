@@ -6,6 +6,8 @@ GTDB R95 available
 
 *July 17, 2020*
 
+test
+
 * GTDB Release 95 is now available and will be used from version ``1.3.0`` and up.
 * This version of GTDB-Tk requires a new version of the GTDB-Tk reference package
   `gtdbtk_r95_data.tar.gz <https://data.ace.uq.edu.au/public/gtdb/data/releases/release95/95.0/auxillary_files>`_.
