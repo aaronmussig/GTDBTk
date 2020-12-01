@@ -59,6 +59,8 @@ jobs:
       - name: commit and upload
         working-directory: ${{ github.workspace }}/gh_pages
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add --all
           git commit -m "docs update" -a
           git push
