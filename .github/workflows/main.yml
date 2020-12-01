@@ -31,7 +31,10 @@ jobs:
         
       - name: Install Sphinx Requirements
         working-directory: ${{ github.workspace }}/docs_src
-        run: python -m pip install -r requirements.txt
+        run: |
+          python -m pip install -r requirements.txt
+          sudo apt-get update -y
+          sudo apt-get install -y pandoc
 
       # otherwise build will fail as ref data doesnt exist
       - name: Manually edit config file
