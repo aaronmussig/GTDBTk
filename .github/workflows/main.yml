@@ -22,7 +22,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      
+      - name: Install required modules
+        run: python3 -m pip install setuptools
+        
       - name: Install Sphinx Requirements
         working-directory: ${{ github.workspace }}/docs_src
         run: python3 -m pip install -r requirements.txt
