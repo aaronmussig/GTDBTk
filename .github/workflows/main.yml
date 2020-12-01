@@ -45,7 +45,7 @@ jobs:
       - name: Manually edit config file
         working-directory: ${{ github.workspace }}/master/gtdbtk/config
         run: grep AF_THRESHOLD config.py >  config2.py && mv config2.py config.py
-      
+
       - name: Make the docs
         working-directory: ${{ github.workspace }}/master/docs_src
         run: make doc
@@ -54,7 +54,7 @@ jobs:
       - name: Move the docs
         run: cp -r master/docs/* gh_pages/
 
-     - name: commit and upload
+      - name: commit and upload
         working-directory: ${{ github.workspace }}/gh_pages
         run: |
           git config --local user.email "action@github.com"
