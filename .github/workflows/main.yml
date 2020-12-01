@@ -17,6 +17,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+#        runs-on: nektos/act-environments-ubuntu:18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,8 +36,8 @@ jobs:
 
       # otherwise build will fail as ref data doesnt exist
       - name: Manually edit config file
-        working-directory: ${{ github.workspace }}/gtdbtk/config
-        run: cat config.py | grep AF_THRESHOLD > config.py
+#        working-directory: ${{ github.workspace }}/gtdbtk/config
+        run: grep AF_THRESHOLD ${{ github.workspace }}/gtdbtk/config/config.py >  ${{ github.workspace }}/gtdbtk/config/config.py
       
       - name: Make the docs
         working-directory: ${{ github.workspace }}/docs_src
